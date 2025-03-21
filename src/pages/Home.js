@@ -8,7 +8,7 @@ const Home = () => {
     fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects")
       .then((res) => res.json())
       .then((data) => {
-        const objectIDs = data.objectIDs.slice(7980, 8000);
+        const objectIDs = data.objectIDs.slice(7990, 8010);
         return Promise.all(
           objectIDs.map((id) =>
             fetch(
