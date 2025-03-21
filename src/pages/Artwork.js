@@ -1,39 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const Artwork = () => {
   const { id } = useParams();
-  const [art, setArt] = useState(null);
+  const [artwork, setArtwork] = useState(null);
 
   useEffect(() => {
-    fetch(
-      `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`
-    )
-      .then((res) => res.json())
-      .then(setArt);
+    const fetchArtwork = async () => {
+      try {
+        const response = await fetch(
+          `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`
+        );
+        const data = await response.json();
+        setArtwork(data);
+      } catch (error) {
+        console.error("Error fetching artwork details:", error);
+      }
+    };
+
+    fetchArtwork();
   }, [id]);
 
-  if (!art) return <h2>Loading...</h2>;
-
-  const imageUrl =
-    art.primaryImage ||
-    art.primaryImageSmall ||
-    "https://via.placeholder.com/400"; // Placeholder if no image
+  if (!artwork) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h2>{art.title || "Untitled"}</h2>
-      <img src={imageUrl} alt={art.title} className="img-fluid" />
+    <div className="artwork-container">
+      <h2>{artwork.title}</h2>
+      <img
+        src={artwork.primaryImage || "https://via.placeholder.com/400"}
+        alt={artwork.title}
+      />
       <p>
-        <strong>Artist:</strong> {art.artistDisplayName || "Unknown"}
+        <strong>Artist:</strong> {artwork.artistDisplayName || "Unknown"}
       </p>
       <p>
-        <strong>Department:</strong> {art.department}
+        <strong>Year:</strong> {artwork.objectDate || "Unknown"}
       </p>
       <p>
-        <strong>Medium:</strong> {art.medium}
+        <strong>Medium:</strong> {artwork.medium || "Unknown"}
       </p>
     </div>
   );
 };
+
 export default Artwork;

@@ -1,19 +1,22 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Artwork from "./pages/Artwork";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <Router>
-      <div className="container">
-        <h1 className="my-4">Metropolitan Museum Art Explorer</h1>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/artwork/:id" element={<Artwork />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="artwork/:id" element={<Artwork />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }

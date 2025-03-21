@@ -1,0 +1,28 @@
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #161717;
+    color: white;
+    padding: 10px 20px;
+  }
+  
+  .menu-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
