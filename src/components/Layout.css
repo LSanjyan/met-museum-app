@@ -8,21 +8,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #161717;
+    background: #343a40;  /* Change header background */
     color: white;
-    padding: 10px 20px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds shadow */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
   
   .menu-btn {
     background: none;
     border: none;
-    color: white;
-    font-size: 24px;
+    font-size: 28px;  /* Adjust size */
     cursor: pointer;
+    color: white;  /* Default color */
+    transition: color 0.3s ease-in-out;
   }
   
-  .content {
-    flex-grow: 1;
-    padding: 20px;
+  .menu-btn:hover {
+    color: #f8d210;  /* Change color on hover */
   }
+  
   

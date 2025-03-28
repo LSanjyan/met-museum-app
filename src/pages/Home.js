@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 import "./Home.css";
 
 const Home = () => {
@@ -14,8 +15,8 @@ const Home = () => {
         const data = await response.json();
 
         if (data.objectIDs) {
-          // Pick the first 20 artworks
-          const artworkIds = data.objectIDs.slice(801, 821);
+          // Pick 20 artworks
+          const artworkIds = data.objectIDs.slice(806, 825);
 
           // Fetch artwork details for each ID
           const artworkPromises = artworkIds.map((id) =>
@@ -25,7 +26,12 @@ const Home = () => {
           );
 
           const artworkDetails = await Promise.all(artworkPromises);
-          setArtworks(artworkDetails);
+
+          // Filter out artworks without images
+          const filteredArtworks = artworkDetails.filter(
+            (art) => art.primaryImageSmall
+          );
+          setArtworks(filteredArtworks);
         }
       } catch (error) {
         console.error("Error fetching artworks:", error);
@@ -51,6 +57,7 @@ const Home = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };
