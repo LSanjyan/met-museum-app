@@ -9,6 +9,10 @@ const Home = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query") || ""; // Match 'query' from Layout.js
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12; // Number of artworks per page
+  const [totalItems, setTotalItems] = useState(0);
+
   useEffect(() => {
     const fetchArtworks = async () => {
       try {
@@ -22,8 +26,13 @@ const Home = () => {
         const data = await response.json();
 
         if (data.objectIDs && data.objectIDs.length > 0) {
-          // Instead of slicing at 806, just get the first 20 IDs
-          const artworkIds = data.objectIDs.slice(0, 20);
+          setTotalItems(data.objectIDs.length); // Store total results
+
+          const startIndex = (currentPage - 1) * itemsPerPage;
+          const artworkIds = data.objectIDs.slice(
+            startIndex,
+            startIndex + itemsPerPage
+          );
 
           // Fetch artwork details for each ID
           const artworkPromises = artworkIds.map((id) =>
@@ -48,13 +57,27 @@ const Home = () => {
     };
 
     fetchArtworks();
-  }, [query]); // Re-fetch artworks when query changes
+  }, [query, currentPage]); // Re-fetch artworks when query or page changes
+
+  // Pagination Controls
+  const nextPage = () => {
+    if (currentPage < Math.ceil(totalItems / itemsPerPage)) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
 
   return (
     <div className="home-container">
       <h2 className="mt-4">
         {query ? `Results for "${query}"` : "Explore Artworks"}
       </h2>
+
       <div className="art-grid">
         {artworks.length > 0 ? (
           artworks.map((art) => (
@@ -74,11 +97,29 @@ const Home = () => {
           <p className="text-center">No artworks found.</p>
         )}
       </div>
+
+      {/* Pagination Buttons */}
+      <div className="pagination">
+        <button
+          onClick={prevPage}
+          disabled={currentPage === 1}
+          className="btn btn-secondary"
+        >
+          Previous
+        </button>
+        <span className="page-number">Page {currentPage}</span>
+        <button
+          onClick={nextPage}
+          disabled={currentPage >= Math.ceil(totalItems / itemsPerPage)}
+          className="btn btn-primary"
+        >
+          Next
+        </button>
+      </div>
+
       <Footer />
     </div>
   );
 };
 
 export default Home;
-// This code defines a Home component that fetches and displays artworks from the Metropolitan Museum of Art's API.
-// It uses React hooks to manage state and side effects, and it utilizes React Router for navigation.

@@ -12,7 +12,7 @@ function Layout() {
   const handleSearch = (e) => {
     e.preventDefault();
     if (query.trim()) {
-      navigate(`/?query=${query}`); // Use 'query' instead of 'q'
+      navigate(`/?query=${query}`);
       setQuery(""); // Clear input after search
     }
   };
@@ -20,19 +20,16 @@ function Layout() {
   return (
     <div className="layout-container">
       {/* Header */}
-      <header className="header d-flex justify-content-between align-items-center p-3">
-        <div>
-          <button
-            className="menu-btn"
-            onClick={() => setSidebarOpen(!isSidebarOpen)}
-          >
-            &#9776;
-          </button>
-          <h1 className="d-inline ms-3">Metropolitan Museum Art</h1>
-        </div>
+      <header className="header">
+        <button
+          className="menu-btn"
+          onClick={() => setSidebarOpen(!isSidebarOpen)}
+        >
+          &#9776;
+        </button>
 
-        {/* Bootstrap Search Bar */}
-        <form className="d-flex" onSubmit={handleSearch}>
+        {/* Search Bar in Center */}
+        <form className="search-bar d-flex" onSubmit={handleSearch}>
           <input
             type="text"
             className="form-control me-2"
@@ -44,6 +41,9 @@ function Layout() {
             Search
           </button>
         </form>
+
+        {/* Title to the Right */}
+        <h1 className="site-title">Metropolitan Museum Art</h1>
       </header>
 
       {/* Sidebar */}
