@@ -23,7 +23,7 @@
   border: none;
   font-size: 28px;
   cursor: pointer;
-  color: #c8ae2f;
+  color: #fffdf3;
   transition: color 0.3s ease-in-out;
 }
 
@@ -42,13 +42,13 @@
 
 .search-bar .form-control {
   flex: 1;
-  background-color: #e6e3d0;
+  background-color: #fffdf3;
   border-radius: 10px;
 }
 
 .search-bar .btn-primary {
-  background-color: #c8ae2f;
-  border-color: #a49f47;
+  background-color: #e1decc;
+  border-color: #bbb65e;
   color: black;
 }
 
@@ -62,5 +62,5 @@
   margin-left: auto;
   font-size: 2rem;
   white-space: nowrap; /* Prevents text wrapping */
-  color: #c8ae2f;
+  color: #fffdf3;
 }

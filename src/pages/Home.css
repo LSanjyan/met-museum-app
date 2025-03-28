@@ -4,7 +4,7 @@
   min-height: 100vh; /* Ensure the container takes up full height */
   display: flex;
   flex-direction: column;
-  background-color: #e6e3d0;
+  background-color: #fffdf3;
 }
 
 .art-grid {
@@ -17,7 +17,7 @@
 }
 
 .art-card {
-  background: white;
+  background: rgb(236, 236, 225);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -43,6 +43,11 @@
   color: #333;
 }
 
+.art-card a {
+  text-decoration: none; /* Removes the underline */
+  color: #333;
+}
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -55,7 +60,7 @@
   padding: 8px 16px;
   font-size: 16px;
   border-radius: 5px;
-  background-color: #c8ae2f;
+  background-color: #b9b087;
   color: black;
   border: none;
   cursor: pointer;
@@ -70,14 +75,6 @@
 /* Fix footer to always stay at the bottom */
 footer {
   margin-top: auto; /* Push the footer to the bottom */
-}
-
-/* Add fallback image space if image is missing */
-.art-card img {
-  height: 250px;
-  object-fit: cover;
-  width: 100%;
-  display: block;
 }
 
 /* Adjust for small screens */

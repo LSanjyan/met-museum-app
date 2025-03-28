@@ -5,7 +5,7 @@
   width: 250px;
   height: 100%;
   background: #343a40;
-  color: #c8ae2f;
+  color: #fffdf3;
   transition: left 0.3s ease-in-out;
   padding-top: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
@@ -19,7 +19,7 @@
 .sidebar .close-btn {
   background: none;
   border: none;
-  color: #c8ae2f;
+  color: #fffdf3;
   font-size: 30px;
   position: absolute;
   top: 10px;

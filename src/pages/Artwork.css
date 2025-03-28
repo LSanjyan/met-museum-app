@@ -1,11 +1,11 @@
 body {
-  background-color: #edecdf; /* Light background for the body */
+  background-color: #fffdf3; /* Light background for the body */
 }
 .artwork-container {
   max-width: 1500px; /* Increase the max width */
   margin: 40px auto; /* Center the container with more space */
   padding: 25px;
-  background: #d3cfb1;
+  background: #cfcdbf;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
