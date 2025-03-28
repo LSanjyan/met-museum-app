@@ -1,6 +1,10 @@
 .home-container {
   padding: 20px;
   text-align: center;
+  min-height: 100vh; /* Ensure the container takes up full height */
+  display: flex;
+  flex-direction: column;
+  background-color: #e6e3d0;
 }
 
 .art-grid {
@@ -9,6 +13,7 @@
   gap: 20px;
   padding: 20px;
   justify-items: center;
+  flex-grow: 1; /* Make sure the art grid grows and fills available space */
 }
 
 .art-card {
@@ -29,6 +34,7 @@
   height: 250px;
   object-fit: cover;
   border-bottom: 2px solid #ddd;
+  display: block; /* Ensures image doesn't leave empty space */
 }
 
 .art-card h3 {
@@ -37,11 +43,6 @@
   color: #333;
 }
 
-@media (max-width: 600px) {
-  .art-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 .pagination {
   display: flex;
   justify-content: center;
@@ -64,4 +65,24 @@
   font-size: 18px;
   font-weight: bold;
   color: #343a40;
+}
+
+/* Fix footer to always stay at the bottom */
+footer {
+  margin-top: auto; /* Push the footer to the bottom */
+}
+
+/* Add fallback image space if image is missing */
+.art-card img {
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+}
+
+/* Adjust for small screens */
+@media (max-width: 600px) {
+  .art-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

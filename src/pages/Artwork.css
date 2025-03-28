@@ -1,0 +1,45 @@
+body {
+  background-color: #edecdf; /* Light background for the body */
+}
+.artwork-container {
+  max-width: 1500px; /* Increase the max width */
+  margin: 40px auto; /* Center the container with more space */
+  padding: 25px;
+  background: #d3cfb1;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.artwork-container h2 {
+  font-size: 24px; /* Slightly bigger title */
+  margin-bottom: 15px;
+}
+
+.artwork-container img {
+  max-height: 600px; /* Increase the height */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.artwork-container p {
+  font-size: 18px; /* Larger text for readability */
+  margin: 10px 0;
+  color: #444;
+}
+.home-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  background-color: #c8ae2f;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.home-btn:hover {
+  background-color: #b39e43;
+}

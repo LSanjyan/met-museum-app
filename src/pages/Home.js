@@ -6,15 +6,18 @@ import "./Home.css";
 
 const Home = () => {
   const [artworks, setArtworks] = useState([]);
+  const [loading, setLoading] = useState(true); // Add loading state
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query") || ""; // Match 'query' from Layout.js
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12; // Number of artworks per page
+  const itemsPerPage = 22; // Number of artworks per page
   const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
     const fetchArtworks = async () => {
+      setLoading(true); // Set loading to true when fetching starts
+
       try {
         let url =
           "https://collectionapi.metmuseum.org/public/collection/v1/search?q=painting";
@@ -43,9 +46,11 @@ const Home = () => {
 
           const artworkDetails = await Promise.all(artworkPromises);
 
-          // Filter out artworks without images
+          // Filter out artworks without high-quality images
           const filteredArtworks = artworkDetails.filter(
-            (art) => art.primaryImageSmall
+            (art) =>
+              art.primaryImage &&
+              art.primaryImage !== "http://via.placeholder.com/400"
           );
           setArtworks(filteredArtworks);
         } else {
@@ -53,6 +58,8 @@ const Home = () => {
         }
       } catch (error) {
         console.error("Error fetching artworks:", error);
+      } finally {
+        setLoading(false); // Set loading to false when fetching is complete
       }
     };
 
@@ -78,36 +85,44 @@ const Home = () => {
         {query ? `Results for "${query}"` : "Explore Artworks"}
       </h2>
 
-      <div className="art-grid">
-        {artworks.length > 0 ? (
-          artworks.map((art) => (
-            <div key={art.objectID} className="art-card">
-              <Link to={`/artwork/${art.objectID}`}>
-                <img
-                  src={
-                    art.primaryImageSmall || "https://via.placeholder.com/200"
-                  }
-                  alt={art.title}
-                />
-                <h3>{art.title}</h3>
-              </Link>
-            </div>
-          ))
-        ) : (
-          <p className="text-center">No artworks found.</p>
-        )}
-      </div>
+      {loading ? (
+        <div className="loading-spinner">
+          <p>Loading artworks...</p>
+        </div>
+      ) : (
+        <div className="art-grid">
+          {artworks.length > 0 ? (
+            artworks.map((art) => (
+              <div key={art.objectID} className="art-card">
+                <Link to={`/artwork/${art.objectID}`}>
+                  <img
+                    src={
+                      art.primaryImageSmall || "https://via.placeholder.com/200"
+                    }
+                    alt={art.title}
+                  />
+                  <h3>{art.title}</h3>
+                </Link>
+              </div>
+            ))
+          ) : (
+            <p className="text-center">No artworks found.</p>
+          )}
+        </div>
+      )}
 
-      {/* Pagination Buttons */}
+      {/* Pagination Controls */}
       <div className="pagination">
         <button
           onClick={prevPage}
           disabled={currentPage === 1}
           className="btn btn-secondary"
         >
-          Previous
+          Prev
         </button>
-        <span className="page-number">Page {currentPage}</span>
+        <span className="page-number">
+          Page {currentPage} of {Math.ceil(totalItems / itemsPerPage)}
+        </span>
         <button
           onClick={nextPage}
           disabled={currentPage >= Math.ceil(totalItems / itemsPerPage)}
