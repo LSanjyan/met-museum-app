@@ -81,6 +81,11 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      {/* Hero Image */}
+      <div className="hero-container">
+        <img src="/Met.jpg" alt="Met Museum" className="big-image" />
+      </div>
+
       <h2 className="mt-4">
         {query ? `Results for "${query}"` : "Explore Artworks"}
       </h2>

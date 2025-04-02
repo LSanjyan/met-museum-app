@@ -5,7 +5,7 @@ body {
   max-width: 1500px; /* Increase the max width */
   margin: 40px auto; /* Center the container with more space */
   padding: 25px;
-  background: #cfcdbf;
+  background: rgb(236, 236, 223);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -33,13 +33,14 @@ body {
   padding: 10px 20px;
   font-size: 18px;
   border: none;
-  background-color: #c8ae2f;
+  background-color: rgb(208, 208, 175);
   color: black;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
+  font-weight: bold;
 }
 
 .home-btn:hover {
-  background-color: #b39e43;
+  background-color: #9c98a9;
 }
