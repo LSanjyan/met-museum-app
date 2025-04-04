@@ -23,7 +23,7 @@ const Footer = () => {
           <FaLinkedin />
         </a>
       </div>
-      <p>© {new Date().getFullYear()} Art Gallery. All rights reserved.</p>
+      <p>© {new Date().getFullYear()}Lilit Sanjyan All rights reserved.</p>
     </footer>
   );
 };
