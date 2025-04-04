@@ -48,5 +48,5 @@ https://met-museum-app-1.onrender.com/
 
 ## Contact
 
-For questions or feedback, please contact github.com/LSanjyan
+For questions or feedback, please contact https://github.com/LSanjyan
 
