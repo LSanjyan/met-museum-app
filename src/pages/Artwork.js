@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-//import Footer from "../components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Artwork.css";
 
