@@ -1,3 +1,4 @@
+
 # Met Museum App
 
 The **Met Museum App** is a project designed to provide users with an interactive and engaging way to explore the vast collection of the Metropolitan Museum of Art. This app allows users to browse, search, and learn about various artworks and exhibits.
@@ -36,6 +37,10 @@ The **Met Museum App** is a project designed to provide users with an interactiv
 - **Test**: Jest React
 
 ## Wireframe
+![Screenshot 2025-04-04 140848](https://github.com/user-attachments/assets/9b4cef6d-9e7f-45c4-baa1-7e1e467de0d2)
+
+## App Interface
+![Screenshot 2025-04-04 144014](https://github.com/user-attachments/assets/320a7cb5-2b69-408a-9bfc-6d1cc5465505)
 
 ## Deployed App
 
