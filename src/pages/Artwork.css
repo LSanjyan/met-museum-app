@@ -17,9 +17,14 @@ body {
 }
 
 .artwork-container img {
-  max-height: 600px; /* Increase the height */
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  max-width: 700px; /* Prevents it from becoming too wide */
+  object-fit: contain;
   border-radius: 10px;
+  display: block;
+  margin: 0 auto; /* Center it */
 }
 
 .artwork-container p {
