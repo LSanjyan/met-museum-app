@@ -61,6 +61,6 @@
 .site-title {
   margin-left: auto;
   font-size: 2rem;
-  white-space: nowrap; /* Prevents text wrapping */
+  /*white-space: nowrap; /* Prevents text wrapping */
   color: #fffdf3;
 }
